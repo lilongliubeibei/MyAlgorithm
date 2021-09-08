@@ -1,5 +1,7 @@
 package hash_function;
 
+
+//最长回文子串
 public class Code06_Manacher {
 
     // public static char[] manacherString(String str) {
@@ -117,5 +119,4 @@ public class Code06_Manacher {
         System.out.println(maxLcpsLength1(str1));
         System.out.println(maxLcpsLength2(str1));
     }
-
 }

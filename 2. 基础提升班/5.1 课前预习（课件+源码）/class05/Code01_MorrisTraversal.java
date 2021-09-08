@@ -1,5 +1,15 @@
 package class05;
 
+
+//二叉树遍历  O(N)  O(1)
+
+//1.对于当前节点cur，若cur无左孩子，则cur=cur.right。
+//
+//		2.如果cur有左孩子，找到cur左子树最右节点，记为mostright。
+//
+//		　　2.1如果mostright右孩子为空，则mostright.right=cur。cur向左移动。(此时为第一次访问该节点)
+//
+//		　　2.2如果mostright右孩子为cur，则mostright.right=null。cur向右移动(此时为第二次访问该节点)
 public class Code01_MorrisTraversal {
 	
 	public static class Node {

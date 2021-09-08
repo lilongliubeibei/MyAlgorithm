@@ -1,5 +1,6 @@
 package class05;
 
+//二叉树中最长路径
 public class Code02_MaxDistanceInTree {
 
 	public static class Node {
