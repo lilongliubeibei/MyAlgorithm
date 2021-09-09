@@ -88,7 +88,12 @@ public class Code01_TrieTree {
 	// }
 	// return node.path;
 	// }
-	// }
+//	// }
+//1、前缀树：没有路就创建，有路就复用
+//	沿途的P++，最后的e++
+//	最开始的root是新创建的节点
+//			前缀树用来解决字符加入的次数
+//	删除前缀树中的字符
 
 	private static class TrieNode {
 		public int path = 0;

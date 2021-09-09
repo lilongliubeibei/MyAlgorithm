@@ -1,5 +1,6 @@
 package class07;
 
+//阿里面试题，	// 总共N个位置，从M点出发，还剩K步，返回最终能达到P的方法数
 public class Code01_RobotWalk {
 
 	public static int ways1(int N, int M, int K, int P) {

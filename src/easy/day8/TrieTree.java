@@ -3,7 +3,9 @@ package easy.day8;
 //前缀树
 public class TrieTree {
     public static class TrieNode {
+        //通过了多少次
         public int path;
+        //是多少路径的终点
         public int end;
         public TrieNode[] nexts;
 
