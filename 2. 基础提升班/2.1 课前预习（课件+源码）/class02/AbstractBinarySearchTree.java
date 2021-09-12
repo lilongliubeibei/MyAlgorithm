@@ -125,27 +125,77 @@ public class AbstractBinarySearchTree {
 	 */
 	protected Node delete(Node deleteNode) {
 		if (deleteNode != null) {
-			Node nodeToReturn = null;
-			if (deleteNode != null) {
-				if (deleteNode.left == null) {
-					nodeToReturn = transplant(deleteNode, deleteNode.right);
-				} else if (deleteNode.right == null) {
-					nodeToReturn = transplant(deleteNode, deleteNode.left);
-				} else {
-					Node successorNode = getMinimum(deleteNode.right);
-					if (successorNode.parent != deleteNode) {
-						transplant(successorNode, successorNode.right);
-						successorNode.right = deleteNode.right;
-						successorNode.right.parent = successorNode;
-					}
-					transplant(deleteNode, successorNode);
-					successorNode.left = deleteNode.left;
-					successorNode.left.parent = successorNode;
-					nodeToReturn = successorNode;
+//			Node nodeToReturn = null;
+//////			if (deleteNode != null) {
+//////				if (deleteNode.left == null) {
+//////					nodeToReturn = transplant(deleteNode, deleteNode.right);
+//////				} else if (deleteNode.right == null) {
+//////					nodeToReturn = transplant(deleteNode, deleteNode.left);
+//////				} else {
+//////					//左右节点都不为null，那么取左子树最大或右子树最小节点
+//////					Node successorNode = getMinimum(deleteNode.right);
+//////					if (successorNode.parent != deleteNode) {
+//////						//如果不是右节点
+//////						//把successorNode.right移动到把successorNode
+//////						transplant(successorNode, successorNode.right);
+//////						//successorNode移动到deleteNode
+//////						successorNode.right = deleteNode.right;
+//////						successorNode.right.parent = successorNode;
+//////					}
+//////					transplant(deleteNode, successorNode);
+//////					successorNode.left = deleteNode.left;
+//////					successorNode.left.parent = successorNode;
+//////					nodeToReturn = successorNode;
+//////				}
+//////				size--;
+//////			}
+//////			return nodeToReturn;
+			//总共有四种情况：1.两边都没有左右孩子 2.只有一边有孩子  3.两边都有子孩子
+
+			//node为要删除的结点
+			if(deleteNode.left==null&&deleteNode.left==null){
+				if(deleteNode==root){
+					root=null;
+				}else if(deleteNode==deleteNode.parent.left){
+					deleteNode.parent.left=null;
+				}else{
+					deleteNode.parent.right=null;
 				}
-				size--;
+			}else if(deleteNode.left!=null&&deleteNode.right==null){
+				//有左节点，没有右节点
+				if(deleteNode==root){
+					root=deleteNode.left;
+
+				}else if(deleteNode==deleteNode.parent.left){
+					deleteNode.parent.left=deleteNode.left;
+				}else{
+					deleteNode.parent.right=deleteNode.left;
+				}
+			}else if(deleteNode.left==null&&deleteNode.right!=null){
+				if(deleteNode==root){
+					root=deleteNode.right;
+				}else if(deleteNode==deleteNode.parent.left){
+					deleteNode.parent.left=deleteNode.right;
+				}else{
+					deleteNode.parent.right = deleteNode.right;
+				}
+			}else{
+				//左右孩子都有的时候
+				Node ghost=deleteNode.left;
+				Node ghostParent=null;
+				while(ghost.right!=null){
+					ghostParent=ghost;
+					ghost=ghost.right;
+				}
+				//进行替换
+				deleteNode.value=ghost.value;
+				//删除ghost结点（其右孩子一定为空）
+				if(deleteNode==ghostParent){
+					ghostParent.left=ghost.left;
+				}else{
+					ghostParent.right=ghost.left;
+				}
 			}
-			return nodeToReturn;
 		}
 		return null;
 	}
@@ -388,4 +438,5 @@ public class AbstractBinarySearchTree {
 		}
 
 	}
+	
 }

@@ -3,6 +3,8 @@ package sort;
 import java.util.HashMap;
 import java.util.Stack;
 
+//二叉树每个结点都有一个int型权值，给定一棵二叉树，要求计算出从根结点到
+//		叶结点的所有路径中，权值和最大的值为多少。
 public class Problem07_MaxSumInTree {
 
 	public static class Node {
@@ -31,6 +33,7 @@ public class Problem07_MaxSumInTree {
 		return Math.max(leftMax, rightMax);
 	}
 
+	//非递归方式
 	public static int maxSumUnrecursive(Node head) {
 		int max = 0;
 		HashMap<Node, Integer> sumMap = new HashMap<>();

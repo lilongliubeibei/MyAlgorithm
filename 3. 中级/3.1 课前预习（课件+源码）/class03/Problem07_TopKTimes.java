@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 import java.util.PriorityQueue;
 
+//给定一个字符串类型的数组arr，求其中出现次数最多的前K个
 public class Problem07_TopKTimes {
 
 	public static class Node {

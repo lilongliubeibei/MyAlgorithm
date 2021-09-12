@@ -19,14 +19,16 @@ public abstract class AbstractSelfBalancingBinarySearchTree extends AbstractBina
      * @return Node that is in place of provided node after rotation.
      */
     protected Node rotateLeft(Node node) {
+        //右子树的父指针指向当前节点的父节点
         Node temp = node.right;
         temp.parent = node.parent;
 
+        //当前节点的右指针指向右子树的左节点
         node.right = temp.left;
+        
         if (node.right != null) {
             node.right.parent = node;
         }
-
         temp.left = node;
         node.parent = temp;
 

@@ -1,5 +1,8 @@
 package sort;
 
+
+
+//求合法最长字符串  dp
 public class Problem04_ParenthesesDeep {
 
 	public static boolean isValid(char[] str) {
