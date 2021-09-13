@@ -1,5 +1,9 @@
 package class02;
-
+//每个节点不是红色就是黑色
+//        不可能有连在一起的红色节点
+//        根节点和叶节点（最底层的空节点）都是黑色root
+//        每个红色节点的连个子节点都是黑色（叶子节点都是黑色：满足出度为0，可近似平衡
+//从任意节点到叶节点的所有路径 黑节点数相同
 /**
  * Not implemented by zuochengyun
  * 
@@ -9,7 +13,7 @@ package class02;
  * @created May 6, 2011
  * 
  */
-public class RedBlackTree extends AbstractSelfBalancingBinarySearchTree {
+public class RedBlackTree extends class02.AbstractSelfBalancingBinarySearchTree {
 
     protected enum ColorEnum {
         RED,
@@ -19,11 +23,13 @@ public class RedBlackTree extends AbstractSelfBalancingBinarySearchTree {
     protected static final RedBlackNode nilNode = new RedBlackNode(null, null, null, null, ColorEnum.BLACK);
 
     /**
-     * @see trees.AbstractBinarySearchTree#insert(int)
+     * @see AbstractBinarySearchTree#insert(int)
      */
     @Override
     public Node insert(int element) {
+        //插入新节点
         Node newNode = super.insert(element);
+        //将新节点的左右节点设置为黑叶节点
         newNode.left = nilNode;
         newNode.right = nilNode;
         root.parent = nilNode;
@@ -42,7 +48,6 @@ public class RedBlackTree extends AbstractSelfBalancingBinarySearchTree {
         if (deleteNode != null && deleteNode != nilNode) {
             Node removedOrMovedNode = deleteNode; // same as deleteNode if it has only one child, and otherwise it replaces deleteNode
             ColorEnum removedOrMovedNodeColor = ((RedBlackNode)removedOrMovedNode).color;
-        
             if (deleteNode.left == nilNode) {
                 replaceNode = deleteNode.right;
                 rbTreeTransplant(deleteNode, deleteNode.right);
@@ -76,7 +81,7 @@ public class RedBlackTree extends AbstractSelfBalancingBinarySearchTree {
     }
     
     /**
-     * @see trees.AbstractBinarySearchTree#createNode(int, trees.AbstractBinarySearchTree.Node, trees.AbstractBinarySearchTree.Node, trees.AbstractBinarySearchTree.Node)
+     * @see AbstractBinarySearchTree#createNode(int, AbstractBinarySearchTree.Node, AbstractBinarySearchTree.Node, AbstractBinarySearchTree.Node)
      */
     @Override
     protected Node createNode(int value, Node parent, Node left, Node right) {
@@ -264,30 +269,38 @@ public class RedBlackTree extends AbstractSelfBalancingBinarySearchTree {
     private void insertRBFixup(RedBlackNode currentNode) {
         // current node is always RED, so if its parent is red it breaks
         // Red-Black property, otherwise no fixup needed and loop can terminate
+        //当前节点父节点也是红，那么需要调整
         while (currentNode.parent != root && ((RedBlackNode) currentNode.parent).color == ColorEnum.RED) {
             RedBlackNode parent = (RedBlackNode) currentNode.parent;
             RedBlackNode grandParent = (RedBlackNode) parent.parent;
+            //如果是左节点
             if (parent == grandParent.left) {
                 RedBlackNode uncle = (RedBlackNode) grandParent.right;
                 // case1 - uncle and parent are both red
                 // re color both of them to black
+                //如果叔叔节点也是红，那么把父节点和叔叔节点都设置为黑，父节点设置为红
                 if (((RedBlackNode) uncle).color == ColorEnum.RED) {
                     parent.color = ColorEnum.BLACK;
                     uncle.color = ColorEnum.BLACK;
                     grandParent.color = ColorEnum.RED;
                     // grandparent was recolored to red, so in next iteration we
                     // check if it does not break Red-Black property
+                    //当前节点改为爷爷节点，继续判断
                     currentNode = grandParent;
                 } 
                 // case 2/3 uncle is black - then we perform rotations
+                //如果叔叔节点不是红色
                 else {
                     if (currentNode == parent.right) { // case 2, first rotate left
+                        //当前节点为父节点
                         currentNode = parent;
+                        //左旋
                         rotateLeft(currentNode);
                     }
                     // do not use parent
                     parent.color = ColorEnum.BLACK; // case 3
                     grandParent.color = ColorEnum.RED;
+                    //右旋
                     rotateRight(grandParent);
                 }
             } else if (parent == grandParent.right) {
@@ -328,5 +341,4 @@ public class RedBlackTree extends AbstractSelfBalancingBinarySearchTree {
             this.color = color;
         }
     }
-
 }

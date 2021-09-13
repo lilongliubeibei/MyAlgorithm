@@ -8,12 +8,14 @@ public class Problem03_ColorLeftRight {
 			return 0;
 		}
 		char[] chs = s.toCharArray();
+		//记录右边有多少个R
 		int[] right = new int[chs.length];
 		right[chs.length - 1] = chs[chs.length - 1] == 'R' ? 1 : 0;
 		for (int i = chs.length - 2; i >= 0; i--) {
 			right[i] = right[i + 1] + (chs[i] == 'R' ? 1 : 0);
 		}
 		int res = right[0];
+		//记录左边有多少个G
 		int left = 0;
 		for (int i = 0; i < chs.length - 1; i++) {
 			left += chs[i] == 'G' ? 1 : 0;

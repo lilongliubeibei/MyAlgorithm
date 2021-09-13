@@ -1,5 +1,7 @@
 package class02;
 
+
+//节点size不小于兄弟节点的任意一个子节点size（不能比侄子小）
 public class Code01_SizeBalancedTreeMap {
 
 	public static class SBTNode<K extends Comparable<K>, V> {

@@ -11,7 +11,7 @@ package class02;
  * 
  * a) The left subtree of a node contains only nodes with keys less than the node's key. </br>
  * b) The right subtree of a node contains only nodes with keys greater than the node's key. </br>
- * c) Both the left and right subtrees must also be binary search trees. </br>
+ * c) Both the left and right subclass02 must also be binary search class02. </br>
  * 
  * @author Ignas Lelys
  * @created May 6, 2011

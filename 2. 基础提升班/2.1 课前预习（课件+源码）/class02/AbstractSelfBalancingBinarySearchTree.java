@@ -3,8 +3,8 @@ package class02;
 /**
  * Not implemented by zuochengyun
  * 
- * Abstract class for self balancing binary search trees. Contains some methods
- * that is used for self balancing trees.
+ * Abstract class for self balancing binary search class02. Contains some methods
+ * that is used for self balancing class02.
  * 
  * @author Ignas Lelys
  * @created Jul 24, 2011
@@ -25,7 +25,7 @@ public abstract class AbstractSelfBalancingBinarySearchTree extends AbstractBina
 
         //当前节点的右指针指向右子树的左节点
         node.right = temp.left;
-        
+        //如果右子树的左节点不为null,将其父节点指向node
         if (node.right != null) {
             node.right.parent = node;
         }

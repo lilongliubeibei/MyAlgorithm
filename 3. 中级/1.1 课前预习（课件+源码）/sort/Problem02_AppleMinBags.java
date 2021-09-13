@@ -1,5 +1,11 @@
 package sort;
 
+
+//小虎去附近的商店买苹果，奸诈的商贩使用了捆绑交易，只提供6个每袋和8个
+//		每袋的包装不可拆分。可是小虎现在只想购买恰好n个苹果，小虎想购买尽
+//		量少的袋数方便携带。如果不能购买恰好n个苹果，小虎将不会购买。输入一个
+//		整数n，表示小虎想购买的个苹果，返回最小使用多少袋子。如果无论如何都不
+//		能正好装下，返回-1。
 public class Problem02_AppleMinBags {
 
 	public static int minBags(int apple) {
@@ -9,8 +15,8 @@ public class Problem02_AppleMinBags {
 		int bag6 = -1;
 		int bag8 = apple / 8;
 		int rest = apple - 8 * bag8;
-		while (bag8 >= 0 && rest < 24) {
-			int restUse6 = minBagBase6(rest);
+		while (bag8 >= 0 ) {
+			int restUse6 = minBagBase6(rest); 
 			if (restUse6 != -1) {
 				bag6 = restUse6;
 				break;
@@ -37,14 +43,17 @@ public class Problem02_AppleMinBags {
 
 	public static void main(String[] args) {
 		int max = Integer.MAX_VALUE;
-		int testTime = 100000000;
-		for (int test = 0; test < testTime; test++) {
-			int apple = (int) (Math.random() * max);
-			if (minBags(apple) != minBagAwesome(apple)) {
-				System.out.println("error");
-			}
-		}
+
+		System.out.println(minBags(30) );
+//		for (int test = 0; test < testTime; test++) {
+//			int apple = (int) (Math.random() * max);
+//			if (minBags(apple) != minBagAwesome(apple)) {
+//				System.out.println("error");
+//			}
+//		}
 
 	}
+	
+	
 
 }

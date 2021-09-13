@@ -7,7 +7,7 @@ package class02;
  * 
  * In computer science, an AVL tree is a self-balancing binary search tree, and
  * it was the first such data structure to be invented.[1] In an AVL tree, the
- * heights of the two child subtrees of any node differ by at most one. Lookup,
+ * heights of the two child subclass02 of any node differ by at most one. Lookup,
  * insertion, and deletion all take O(log n) time in both the average and worst
  * cases, where n is the number of nodes in the tree prior to the operation.
  * Insertions and deletions may require the tree to be rebalanced by one or more
@@ -20,7 +20,7 @@ package class02;
 public class AVLTree extends AbstractSelfBalancingBinarySearchTree {
 
     /**
-     * @see trees.AbstractBinarySearchTree#insert(int)
+     * @see class02.AbstractBinarySearchTree#insert(int)
      * 
      *      AVL tree insert method also balances tree if needed. Additional
      *      height parameter on node is used to track if one subtree is higher
@@ -30,12 +30,13 @@ public class AVLTree extends AbstractSelfBalancingBinarySearchTree {
     @Override
     public Node insert(int element) {
         Node newNode = super.insert(element);
+        //从新插入节点，向上rebalance
         rebalance((AVLNode)newNode);
         return newNode;
     }
 
     /**
-     * @see trees.AbstractBinarySearchTree#delete(int)
+     * @see class02.AbstractBinarySearchTree#delete(int)
      */
     @Override
     public Node delete(int element) {
@@ -57,7 +58,7 @@ public class AVLTree extends AbstractSelfBalancingBinarySearchTree {
     }
     
     /**
-     * @see trees.AbstractBinarySearchTree#createNode(int, trees.AbstractBinarySearchTree.Node, trees.AbstractBinarySearchTree.Node, trees.AbstractBinarySearchTree.Node)
+     * @see class02.AbstractBinarySearchTree#createNode(int, class02.AbstractBinarySearchTree.Node, class02.AbstractBinarySearchTree.Node, class02.AbstractBinarySearchTree.Node)
      */
     @Override
     protected Node createNode(int value, Node parent, Node left, Node right) {
@@ -80,22 +81,28 @@ public class AVLTree extends AbstractSelfBalancingBinarySearchTree {
             int nodeBalance = rightHeight - leftHeight;
             // rebalance (-2 means left subtree outgrow, 2 means right subtree)
             if (nodeBalance == 2) {
+                //右子树过高
                 if (node.right.right != null) {
+                    //以当前节点左旋  RR
                     node = (AVLNode)avlRotateLeft(node);
                     break;
                 } else {
+                    //RL 
                     node = (AVLNode)doubleRotateRightLeft(node);
                     break;
                 }
             } else if (nodeBalance == -2) {
                 if (node.left.left != null) {
+                    //LL
                     node = (AVLNode)avlRotateRight(node);
                     break;
                 } else {
+                    //LR
                     node = (AVLNode)doubleRotateLeftRight(node);
                     break;
                 }
             } else {
+                //如果没有旋转，也更新一下该节点的高度
                 updateHeight(node);
             }
             
@@ -129,6 +136,7 @@ public class AVLTree extends AbstractSelfBalancingBinarySearchTree {
      * Take right child and rotate it to the right side first and then rotate
      * node to the left side.
      */
+    //RL 先右旋再左旋
     protected Node doubleRotateRightLeft(Node node) {
         node.right = avlRotateRight(node.right);
         return avlRotateLeft(node);
@@ -139,6 +147,7 @@ public class AVLTree extends AbstractSelfBalancingBinarySearchTree {
      * node to the left side.
      */
     protected Node doubleRotateLeftRight(Node node) {
+        //LR 先左旋再右旋
         node.left = avlRotateLeft(node.left);
         return avlRotateRight(node);
     }
@@ -175,6 +184,7 @@ public class AVLTree extends AbstractSelfBalancingBinarySearchTree {
     private static final void updateHeight(AVLNode node) {
         int leftHeight = (node.left == null) ? -1 : ((AVLNode) node.left).height;
         int rightHeight = (node.right == null) ? -1 : ((AVLNode) node.right).height;
+      
         node.height = 1 + Math.max(leftHeight, rightHeight);
     }
 

@@ -16,6 +16,7 @@ public class Problem01_CordCoverMaxPoint {
 	public static int nearestIndex(int[] arr, int R, int value) {
 		int L = 0;
 		int index = R;
+		//二分法
 		while (L < R) {
 			int mid = L + ((R - L) >> 1);
 			if (arr[mid] >= value) {

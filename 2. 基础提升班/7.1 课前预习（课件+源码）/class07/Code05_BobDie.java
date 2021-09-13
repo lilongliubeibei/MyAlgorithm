@@ -1,5 +1,7 @@
 package class07;
 
+
+//给定行数和列数  N  M   起始位置i,j 每一步等概率上下左右走，走K步，出界即死亡 求活下来的概率
 public class Code05_BobDie {
 
 	public static String bob1(int N, int M, int i, int j, int K) {

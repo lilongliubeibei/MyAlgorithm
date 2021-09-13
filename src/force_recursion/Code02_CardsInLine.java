@@ -1,7 +1,7 @@
 package force_recursion;
 
 
-//纸牌游戏，只能从数组的两端取一张
+//纸牌游戏，只能从数组的两端取一张  先手后手
 public class Code02_CardsInLine {
 
     public static int win1(int[] arr) {
@@ -12,7 +12,7 @@ public class Code02_CardsInLine {
     }
 
     
-    //先拿一张牌
+    //先拿一张牌的最大方案
     public static int f(int[] arr, int i, int j) {
         if (i == j) {
             return arr[i];
@@ -20,11 +20,15 @@ public class Code02_CardsInLine {
         return Math.max(arr[i] + s(arr, i + 1, j), arr[j] + s(arr, i, j - 1));
     }
 
-    //后拿一张牌
+    //后拿一张牌的最大方案
     public static int s(int[] arr, int i, int j) {
         if (i == j) {
             return 0;
         }
+        //前一个人会选 Math.max(arr[i] + s(arr, i + 1, j), arr[j] + s(arr, i, j - 1));、
+        //假设前者大，arr[i]被选走，剩下 i+1到j   则为f(arr, i + 1, j)  
+        //假设后者大，arr[j]被选走，剩下 i到j+1   则为f(arr, i , j+ 1)
+        //
         return Math.min(f(arr, i + 1, j), f(arr, i, j - 1));
     }
 
@@ -47,9 +51,9 @@ public class Code02_CardsInLine {
 
 
     public static void main(String[] args) {
-        int[] arr = {1, 9, 1};
+        int[] arr = {1, 9, 5,6,8,4,1};
         System.out.println(win1(arr));
-        // System.out.println(win2(arr));
+         System.out.println(win2(arr));
 
     }
 }

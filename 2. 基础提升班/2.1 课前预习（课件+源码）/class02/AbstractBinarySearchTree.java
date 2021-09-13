@@ -5,16 +5,16 @@ package class02;
  * 
  * Abstract binary search tree implementation. Its basically fully implemented
  * binary search tree, just template method is provided for creating Node (other
- * trees can have slightly different nodes with more info). This way some code
+ * class02 can have slightly different nodes with more info). This way some code
  * from standart binary search tree can be reused for other kinds of binary
- * trees.
+ * class02.
  * 
  * @author Ignas Lelys
  * @created Jun 29, 2011
  * 
  */
 public class AbstractBinarySearchTree {
-
+ 
 	/** Root node where whole tree starts. */
 	public Node root;
 
@@ -22,7 +22,7 @@ public class AbstractBinarySearchTree {
 	protected int size;
 
 	/**
-	 * Because this is abstract class and various trees have different
+	 * Because this is abstract class and various class02 have different
 	 * additional information on different nodes subclasses uses this abstract
 	 * method to create nodes (maybe of class {@link Node} or maybe some
 	 * different node sub class).
@@ -74,8 +74,11 @@ public class AbstractBinarySearchTree {
 			return root;
 		}
 
+		//插入节点的父节点
 		Node insertParentNode = null;
+		//从根节点开始查询
 		Node searchTempNode = root;
+		//二分法查找插入节点的父节点
 		while (searchTempNode != null && searchTempNode.value != null) {
 			insertParentNode = searchTempNode;
 			if (element < searchTempNode.value) {
@@ -86,6 +89,7 @@ public class AbstractBinarySearchTree {
 		}
 
 		Node newNode = createNode(element, insertParentNode, null, null);
+		
 		if (insertParentNode.value > newNode.value) {
 			insertParentNode.left = newNode;
 		} else {

@@ -4,7 +4,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.TreeMap;
-import java.util.TreeSet;
+import java.util.class02et;
 
 public class Code01_HashAndTree {
 
@@ -87,27 +87,27 @@ public class Code01_HashAndTree {
 		System.out.println(hashMap2.get(nodeB));
 		System.out.println("========4=========");
 
-		// treeSet的key是非基础类型->Node类型
+		// class02et的key是非基础类型->Node类型
 		nodeA = new Node(5);
 		nodeB = new Node(3);
 		nodeC = new Node(7);
 
-		TreeSet<Node> treeSet = new TreeSet<>();
+		class02et<Node> class02et = new class02et<>();
 		// 以下的代码会报错，因为没有提供Node类型的比较器
 		try {
-			treeSet.add(nodeA);
-			treeSet.add(nodeB);
-			treeSet.add(nodeC);
+			class02et.add(nodeA);
+			class02et.add(nodeB);
+			class02et.add(nodeC);
 		} catch (Exception e) {
 			System.out.println("错误信息：" + e.getMessage());
 		}
 
-		treeSet = new TreeSet<>(new NodeComparator());
+		class02et = new class02et<>(new NodeComparator());
 		// 以下的代码没问题，因为提供了Node类型的比较器
 		try {
-			treeSet.add(nodeA);
-			treeSet.add(nodeB);
-			treeSet.add(nodeC);
+			class02et.add(nodeA);
+			class02et.add(nodeB);
+			class02et.add(nodeC);
 			System.out.println("这次节点都加入了");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

@@ -2,8 +2,14 @@ package class04;
 
 import java.util.LinkedList;
 
+
+//窗口只能右边界或左边界向右滑的情况下，维持窗口内部最大值或者最小值快速更新的结
+//		构
+//		窗口内最大值与最小值更新结构的原理与实现
 public class Code01_SlidingWindowMaxArray {
 
+	
+	//最小值为w
 	public static int[] getMaxWindow(int[] arr, int w) {
 		if (arr == null || w < 1 || arr.length < w) {
 			return null;

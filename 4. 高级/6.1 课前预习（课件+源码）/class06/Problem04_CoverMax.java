@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
-import java.util.TreeSet;
+import java.util.class02et;
 
 public class Problem04_CoverMax {
 
@@ -49,7 +49,7 @@ public class Problem04_CoverMax {
 			return 0;
 		}
 		Arrays.sort(recs, new DownComparator());
-		TreeSet<Rectangle> leftOrdered = new TreeSet<>(new LeftComparator());
+		class02et<Rectangle> leftOrdered = new class02et<>(new LeftComparator());
 		int ans = 0;
 		for (int i = 0; i < recs.length; i++) {
 			int curDown = recs[i].down;
@@ -60,7 +60,7 @@ public class Problem04_CoverMax {
 			}
 			i = index;
 			removeLowerOnCurDown(leftOrdered, curDown);
-			TreeSet<Rectangle> rightOrdered = new TreeSet<>(new RightComparator());
+			class02et<Rectangle> rightOrdered = new class02et<>(new RightComparator());
 			for (Rectangle rec : leftOrdered) {
 				removeLeftOnCurLeft(rightOrdered, rec.left);
 				rightOrdered.add(rec);
@@ -70,7 +70,7 @@ public class Problem04_CoverMax {
 		return ans;
 	}
 
-	public static void removeLowerOnCurDown(TreeSet<Rectangle> set, int curDown) {
+	public static void removeLowerOnCurDown(class02et<Rectangle> set, int curDown) {
 		List<Rectangle> removes = new ArrayList<>();
 		for (Rectangle rec : set) {
 			if (rec.up <= curDown) {
@@ -82,7 +82,7 @@ public class Problem04_CoverMax {
 		}
 	}
 
-	public static void removeLeftOnCurLeft(TreeSet<Rectangle> rightOrdered, int curLeft) {
+	public static void removeLeftOnCurLeft(class02et<Rectangle> rightOrdered, int curLeft) {
 		List<Rectangle> removes = new ArrayList<>();
 		for (Rectangle rec : rightOrdered) {
 			if (rec.right > curLeft) {

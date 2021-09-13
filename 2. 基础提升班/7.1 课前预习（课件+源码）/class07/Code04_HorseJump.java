@@ -1,5 +1,7 @@
 package class07;
 
+
+//x 0~9和y 0~10的棋盘上，从0，0 跳step步到x,y有多少种方法  马走日
 public class Code04_HorseJump {
 
 	public static int getWays(int x, int y, int step) {
@@ -7,6 +9,7 @@ public class Code04_HorseJump {
 	}
 
 	public static int process(int x, int y, int step) {
+		//x,y不可再接触边界
 		if (x < 0 || x > 8 || y < 0 || y > 9) {
 			return 0;
 		}

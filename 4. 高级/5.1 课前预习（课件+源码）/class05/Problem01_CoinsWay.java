@@ -8,7 +8,7 @@ public class Problem01_CoinsWay {
 		}
 		return process1(arr, 0, aim);
 	}
-
+//用index ..... 以后的元素 来凑成aim的方法数
 	public static int process1(int[] arr, int index, int aim) {
 		int res = 0;
 		if (index == arr.length) {

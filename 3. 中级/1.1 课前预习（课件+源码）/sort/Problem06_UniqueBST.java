@@ -15,7 +15,7 @@ public class Problem06_UniqueBST {
 		}
 	}
 
-	public static int numTrees(int n) {
+	public static int numclass02(int n) {
 		if (n < 2) {
 			return 1;
 		}
@@ -29,7 +29,7 @@ public class Problem06_UniqueBST {
 		return num[n];
 	}
 
-	public static List<Node> generateTrees(int n) {
+	public static List<Node> generateclass02(int n) {
 		return generate(1, n);
 	}
 
@@ -96,8 +96,8 @@ public class Problem06_UniqueBST {
 
 	public static void main(String[] args) {
 		int n = 4;
-		System.out.println(numTrees(n));
-		List<Node> res = generateTrees(n);
+		System.out.println(numclass02(n));
+		List<Node> res = generateclass02(n);
 		for (Node node : res) {
 			printTree(node);
 		}

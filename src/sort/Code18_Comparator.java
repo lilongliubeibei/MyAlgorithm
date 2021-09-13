@@ -3,7 +3,7 @@ package sort;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.PriorityQueue;
-import java.util.TreeSet;
+import java.util.class02et;
 
 public class Code18_Comparator {
 
@@ -128,7 +128,7 @@ public class Code18_Comparator {
 		System.out.println("===========================");
 		System.out.println("===========================");
 
-		TreeSet<Student> treeAgeDescending = new TreeSet<>(new AgeDescendingComparator());
+		class02et<Student> treeAgeDescending = new class02et<>(new AgeDescendingComparator());
 		treeAgeDescending.add(student1);
 		treeAgeDescending.add(student2);
 		treeAgeDescending.add(student3);
