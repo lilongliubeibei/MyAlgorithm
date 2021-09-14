@@ -22,6 +22,9 @@ public class Code01_MorrisTraversal {
 		}
 	}
 
+
+/*	中序遍历的两处打印输出语句，一处是在cur没有左子树的时候，直接打印cur；
+	第二处是在cur有左子树，把当前节点的左子树遍历完了，cur向右移动之前，此时是第二次遍历到该节点，打印cur。*/
 	public static void morrisIn(Node head) {
 		if (head == null) {
 			return;
@@ -48,6 +51,15 @@ public class Code01_MorrisTraversal {
 		System.out.println();
 	}
 
+
+//	得到的遍历序列是1、2、4、2、5、1、3、6、3、7，可以发现有左孩子的节点1、2、3遍历了两次
+//	（上面分析代码的时候有图示讲解了为什么会遍历两次），对于没有左孩子的节点4、5、6、7遍历了一次，
+//	因为这四个节点没有左孩子，也就不会遍历到左子树上去，所以只会遍历一次。
+//	这段分析可以解释为什么Morris遍历的时间复杂度是 O ( n ) O(n)O(n) ，因为每个节点最多被遍历两次。
+
+
+//	第一处是在cur没有左子树的时候，直接打印cur，然后cur向右移动；
+//	第二处是在cur有左子树，在cur向左移动之前，此时是第一次遍历当前节点，故打印cur。
 	public static void morrisPre(Node head) {
 		if (head == null) {
 			return;
@@ -76,6 +88,12 @@ public class Code01_MorrisTraversal {
 		System.out.println();
 	}
 
+	
+/*	3）后序遍历：
+	Morris中，对一个节点最多只会遍历两次，那么怎么做到后序遍历呢？
+	做法是这样的：对于没有左子树的节点，这些节点只会遍历一次，不用关心这些节点。
+	对于含有左子树的节点，这些节点会被遍历两次，在第二次遍历的时候逆序打印左子树的右边界。
+	最后在函数退出之前再单独逆序打印整棵树的右边界。*/
 	public static void morrisPos(Node head) {
 		if (head == null) {
 			return;

@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map.Entry;
 
+
+//认识哈希函数和哈希表的实现
 public class Code01_HashMap {
 
 	public static void main(String[] args) {
@@ -86,12 +88,12 @@ public class Code01_HashMap {
 			map.remove(removeKey);
 		}
 		for (Entry<String, String> entry : map.entrySet()) {
-			String key = entry.getKey();
-			String value = entry.getValue();
-			System.out.println(key + "," + value);
+		String key = entry.getKey();
+		String value = entry.getValue();
+		System.out.println(key + "," + value);
 		}
 		System.out.println("=========================");
 
-	}
+		}
 
-}
+		}

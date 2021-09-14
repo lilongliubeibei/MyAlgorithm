@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Stack;
 
+
+//并查集结构的详解和实现
 //一个快速进行进行集合查询和合并的算法  并查集
 public class Code04_UnionFind {
 
