@@ -1,9 +1,11 @@
 package class04;
 
 import java.util.Stack;
-
+/*
+定义：数组中累加和与最小值的乘积，假设叫做指标A。
+		给定一个数组，请返回子数组中，指标A最大的值。*/
 public class Code03_AllTimesMinToMax {
-
+	
 	public static int max1(int[] arr) {
 		int max = Integer.MIN_VALUE;
 		for (int i = 0; i < arr.length; i++) {
@@ -20,6 +22,8 @@ public class Code03_AllTimesMinToMax {
 		return max;
 	}
 
+	//求以每个元素为最小值的子数组   左边比它小的  右边比它小的   O(n）
+	//单调栈解法
 	public static int max2(int[] arr) {
 		int size = arr.length;
 		int[] sums = new int[size];
