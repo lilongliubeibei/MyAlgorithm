@@ -84,20 +84,24 @@ public class AVLTree extends AbstractSelfBalancingBinarySearchTree {
                 //右子树过高
                 if (node.right.right != null) {
                     //以当前节点左旋  RR
+                    //插入结点在发现结点的右子树的右边
                     node = (AVLNode)avlRotateLeft(node);
                     break;
                 } else {
-                    //RL 
+                    //RL 先右旋再左旋
+                    //在a的右子树根节点的左子树上插入节点而破坏平衡
                     node = (AVLNode)doubleRotateRightLeft(node);
                     break;
                 }
             } else if (nodeBalance == -2) {
                 if (node.left.left != null) {
-                    //LL
+                    //LL 直接右旋
+                    //插入结点在发现结点左子树的左边
                     node = (AVLNode)avlRotateRight(node);
                     break;
                 } else {
-                    //LR
+                    //LR  先左旋再右旋
+                    //在a的左子树根节点的右子树上插入节点而破坏平衡
                     node = (AVLNode)doubleRotateLeftRight(node);
                     break;
                 }
