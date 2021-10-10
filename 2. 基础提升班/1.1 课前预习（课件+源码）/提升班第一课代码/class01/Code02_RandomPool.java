@@ -26,6 +26,7 @@ public class Code02_RandomPool {
 
 		public void insert(K key) {
 			if (!this.keyIndexMap.containsKey(key)) {
+				//index就是当前的size
 				this.keyIndexMap.put(key, this.size);
 				this.indexKeyMap.put(this.size++, key);
 			}
@@ -33,10 +34,15 @@ public class Code02_RandomPool {
 
 		public void delete(K key) {
 			if (this.keyIndexMap.containsKey(key)) {
+				//key对应的index
 				int deleteIndex = this.keyIndexMap.get(key);
+				//最后一个index
 				int lastIndex = --this.size;
+				//最后一个key
 				K lastKey = this.indexKeyMap.get(lastIndex);
+				//将最后一个key存在在deleteIndex
 				this.keyIndexMap.put(lastKey, deleteIndex);
+				//将最后一个key存在在deleteIndex
 				this.indexKeyMap.put(deleteIndex, lastKey);
 				this.keyIndexMap.remove(key);
 				this.indexKeyMap.remove(lastIndex);

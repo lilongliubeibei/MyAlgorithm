@@ -13,6 +13,17 @@ package class02;
  * @created May 6, 2011
  * 
  */
+
+/*
+左旋：
+        当发生两个连续的红色节点，当前节点是红色并且父节点是红色，叔叔节点是黑色，且当前节点是右子树的时候，需要进行左旋，将父节点左旋，本节点向上，本节点的左子树，连接上左旋下来的父节点的右侧
+        右旋：
+        当节点为红色，且父节点也为红色，叔叔节点为黑色，但是此节点在左子树，则不满足左旋，则需要进行右旋。
+        右旋要以爷爷节点进行向右旋转，并将爷爷节点更改为红色，此节点的父节点右旋过后变成黑色。
+        爷爷节点变为右子树，父节点右子树插入到右旋过后的爷爷节点的左边。
+*/
+// 最好的一篇博客 https://blog.csdn.net/weixin_42496943/article/details/111093825
+
 public class RedBlackTree extends class02.AbstractSelfBalancingBinarySearchTree {
 
     protected enum ColorEnum {

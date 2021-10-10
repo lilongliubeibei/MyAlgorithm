@@ -191,6 +191,7 @@ public class AbstractBinarySearchTree {
                 //左右孩子都有的时候
                 Node ghost = deleteNode.left;
                 Node ghostParent = null;
+                //左子树的最右节点
                 while (ghost.right != null) {
                     ghostParent = ghost;
                     ghost = ghost.right;

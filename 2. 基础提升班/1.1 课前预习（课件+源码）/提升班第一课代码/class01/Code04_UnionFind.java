@@ -19,8 +19,12 @@ public class Code04_UnionFind {
     }
 
     public static class UnionFindSet<V> {
+        //存储所有元素
         public HashMap<V, Element<V>> elementMap;
+        //存储每个元素的父节点
         public HashMap<Element<V>, Element<V>> fatherMap;
+        
+        //元素所在集合的大小
         public HashMap<Element<V>, Integer> sizeMap;
 
         
