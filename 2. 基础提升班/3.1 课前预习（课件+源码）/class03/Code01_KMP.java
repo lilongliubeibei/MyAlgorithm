@@ -32,23 +32,23 @@ public class Code01_KMP {
 
 
     // next[i]的求解方法是，找到从t[0]~t[i-1]的公共最长匹配前缀和后缀的长度
-    public static int[] getNextArray(char[] ms) {
-        if (ms.length == 1) {
+    public static int[] getNextArray(char[] str) {
+        if (str.length == 1) {
             return new int[]{-1};
         }
-        int[] next = new int[ms.length];
+        int[] next = new int[str.length];
         //定义
         next[0] = -1;
         //定义
         next[1] = 0;
         int i = 2;
-        int cn = 0;
+        int tmp = 0;
         //从i=2开始求，
         while (i < next.length) {
-            if (ms[i - 1] == ms[cn]) {
-                next[i++] = ++cn;
-            } else if (cn > 0) {
-                cn = next[cn];
+            if (str[i - 1] == str[tmp]) {
+                next[i++] = ++tmp;
+            } else if (tmp > 0) {
+                tmp = next[tmp];
             } else {
                 next[i++] = 0;
             }
@@ -63,4 +63,57 @@ public class Code01_KMP {
 
     }
 
+    
+    //暴力解法
+    /**
+
+     * 暴力破解法
+
+     * @param ts 主串
+
+     * @param ps 模式串
+
+     * @return 如果找到，返回在主串中第一个字符出现的下标，否则为-1
+
+     */
+
+    public static int bf(String ts, String ps) {
+
+        char[] t = ts.toCharArray();
+
+        char[] p = ps.toCharArray();
+
+        int i = 0; // 主串的位置
+
+        int j = 0; // 模式串的位置
+
+        while (i < t.length && j < p.length) {
+
+            if (t[i] == p[j]) { // 当两个字符相同，就比较下一个
+
+                i++;
+
+                j++;
+
+            } else {
+
+                i = i - j + 1; // 一旦不匹配，i后退
+
+                j = 0; // j归0
+
+            }
+
+        }
+
+        if (j == p.length) {
+
+            return i - j;
+
+        } else {
+
+            return -1;
+
+        }
+
+    }
 }

@@ -1,10 +1,6 @@
 package linked_list;
 
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.TreeMap;
-import java.util.class02et;
+import java.util.*;
 
 public class Code01_HashAndTree {
 
@@ -92,7 +88,7 @@ public class Code01_HashAndTree {
 		nodeB = new Node(3);
 		nodeC = new Node(7);
 
-		class02et<Node> class02et = new class02et<>();
+		TreeSet<Node> class02et = new TreeSet<>();
 		// 以下的代码会报错，因为没有提供Node类型的比较器
 		try {
 			class02et.add(nodeA);
@@ -102,7 +98,7 @@ public class Code01_HashAndTree {
 			System.out.println("错误信息：" + e.getMessage());
 		}
 
-		class02et = new class02et<>(new NodeComparator());
+		class02et = new TreeSet<Node>(new NodeComparator());
 		// 以下的代码没问题，因为提供了Node类型的比较器
 		try {
 			class02et.add(nodeA);

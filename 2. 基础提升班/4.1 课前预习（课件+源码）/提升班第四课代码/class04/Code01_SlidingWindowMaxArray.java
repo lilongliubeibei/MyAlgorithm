@@ -15,7 +15,7 @@ public class Code01_SlidingWindowMaxArray {
 			return null;
 		}
 		LinkedList<Integer> qmax = new LinkedList<Integer>();
-		int[] res = new int[arr.length - w + 1];
+		int[] result = new int[arr.length - w + 1];
 		int index = 0;
 		for (int i = 0; i < arr.length; i++) {
 			while (!qmax.isEmpty() && arr[qmax.peekLast()] <= arr[i]) {
@@ -31,10 +31,10 @@ public class Code01_SlidingWindowMaxArray {
 			}
 			//从第w个数开始，输出窗口最大值
 			if (i >= w - 1) {
-				res[index++] = arr[qmax.peekFirst()];
+				result[index++] = arr[qmax.peekFirst()];
 			}
 		}
-		return res;
+		return result;
 	}
 
 	// for test
